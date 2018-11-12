@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { easePolyOut } from 'd3-ease';
 import Animate from 'react-move/Animate';
-import Otamendi from '../../../Resources/images/players/Otamendi.png'
+import Otamendi from '../../../Resources/images/players/Otamendi.png';
+import PlayerCard from '../../UI/playerCard';
 
 class HomeCards extends Component {
 
@@ -28,26 +29,50 @@ class HomeCards extends Component {
     }
 
     showAnimateCards = () =>(
-        this.state.cards.map(card,i) => (
+        this.state.cards.map((card,i) => (
             <Animate
                 key={i}
                 show={this.props.show}
+
+                start={{
+                    left: 0,
+                    bottom: 0
+                }}
+
+                enter={{
+                    left: [card.left],
+                    bottom: [card.bottom],
+                    timing: {duration: 1000, ease: easePolyOut}
+                }}
             >
-                {({})=> {
+                {({ left, bottom})=> {
                     return(
-                        <div>
-                            div
+                        <div
+                            style={{
+                                position: 'absolute',
+                                left,
+                                bottom
+                            }}
+                        >
+                            <PlayerCard
+                                number="30"
+                                name="Nicolas"
+                                lastname="Otamendi"
+                                bck={Otamendi}
+                            >
+                                
+                            </PlayerCard>
                         </div>
                     )
                 }}
             </Animate>
-        )
-    );
+        ))
+    )
 
     render() {
         return (
             <div>
-                {this.showAnimateCards}
+                {this.showAnimateCards()}
             </div>
         );
     }
