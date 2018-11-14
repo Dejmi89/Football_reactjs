@@ -27,8 +27,8 @@ const FormField = ({formData, id, change}) => {
                                 value={formData.value}
                                 onChange={(event)=> change({event, id})}
                             >
-                             {showError()}
                             </input>
+                            {showError()}
                         </div>
                     )
                 break;
