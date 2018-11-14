@@ -17,9 +17,11 @@ const config = {
 
   const firebaseDataBase = firebase.database();
   const firebaseMatches = firebaseDataBase.ref('matches');
+  const firebasePromotions = firebaseDataBase.ref('promotions');
 
 export {
     firebase,
-    firebaseMatches
+    firebaseMatches,
+    firebasePromotions
 }
 
